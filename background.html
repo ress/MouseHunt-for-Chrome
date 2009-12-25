@@ -64,28 +64,3 @@
 </script>
 </head>
 </html>
-
-
-GM_xmlhttpRequest({
-		method: 'GET',
-		url: 'http://apps.facebook.com/mousehunt/hunterprofile.php',
-		headers: {
-				'User-agent': 'Mozilla/4.0 (compatible) Greasemonkey',
-				'Content-type':'application/x-www-form-urlencoded',
-				},
-			onload: function(responseDetails) {
-			var res = responseDetails.responseText;
-			if (MsgObj==null && sMsg==null)
-				{
-				sMsg = res.match(/<input type=["]hidden["] id=["].+hornWaitValue.+["] value=["](.+)["] fbcontext=["].+["] [/]>/);
-				if (sMsg)
-					{
-					sMsg = parseInt(sMsg[1]);
-					if (sMsg <0)
-						sMsg=0;
-					printMsg();
-					}
-				}
-		}});
-
-	}
